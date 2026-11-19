@@ -1,0 +1,437 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-17T05:44:20.329243+00:00",
+  "title": "Design System: Overture Studios",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Blacklight Ground",
+        "canonical": "oklch(12.7% 0.015 293)",
+        "tonalRamp": [
+          "oklch(15% 0.015 293)",
+          "oklch(26% 0.015 293)",
+          "oklch(38% 0.015 293)",
+          "oklch(49% 0.015 293)",
+          "oklch(61% 0.015 293)",
+          "oklch(72% 0.015 293)",
+          "oklch(84% 0.015 293)",
+          "oklch(95% 0.015 293)"
+        ]
+      },
+      "ground-2": {
+        "role": "neutral",
+        "displayName": "Raised Ground",
+        "canonical": "oklch(16.1% 0.027 294)",
+        "tonalRamp": [
+          "oklch(15% 0.027 294)",
+          "oklch(26% 0.027 294)",
+          "oklch(38% 0.027 294)",
+          "oklch(49% 0.027 294)",
+          "oklch(61% 0.027 294)",
+          "oklch(72% 0.027 294)",
+          "oklch(84% 0.027 294)",
+          "oklch(95% 0.027 294)"
+        ]
+      },
+      "ground-3": {
+        "role": "neutral",
+        "displayName": "Pressed Ground",
+        "canonical": "oklch(20.1% 0.043 293)",
+        "tonalRamp": [
+          "oklch(15% 0.043 293)",
+          "oklch(26% 0.043 293)",
+          "oklch(38% 0.043 293)",
+          "oklch(49% 0.043 293)",
+          "oklch(61% 0.043 293)",
+          "oklch(72% 0.043 293)",
+          "oklch(84% 0.043 293)",
+          "oklch(95% 0.043 293)"
+        ]
+      },
+      "ink": {
+        "role": "primary",
+        "displayName": "Stamp White",
+        "canonical": "oklch(77.9% 0.123 292)",
+        "tonalRamp": [
+          "oklch(15% 0.050 292)",
+          "oklch(26% 0.072 292)",
+          "oklch(38% 0.096 292)",
+          "oklch(49% 0.118 292)",
+          "oklch(61% 0.123 292)",
+          "oklch(72% 0.123 292)",
+          "oklch(84% 0.123 292)",
+          "oklch(95% 0.123 292)"
+        ]
+      },
+      "ink-dim": {
+        "role": "neutral",
+        "displayName": "Faded Ink",
+        "canonical": "oklch(64.5% 0.085 293)",
+        "tonalRamp": [
+          "oklch(15% 0.050 293)",
+          "oklch(26% 0.072 293)",
+          "oklch(38% 0.085 293)",
+          "oklch(49% 0.085 293)",
+          "oklch(61% 0.085 293)",
+          "oklch(72% 0.085 293)",
+          "oklch(84% 0.085 293)",
+          "oklch(95% 0.085 293)"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Ghost Ink",
+        "canonical": "oklch(34.9% 0.078 290)",
+        "tonalRamp": [
+          "oklch(15% 0.050 290)",
+          "oklch(26% 0.072 290)",
+          "oklch(38% 0.078 290)",
+          "oklch(49% 0.078 290)",
+          "oklch(61% 0.078 290)",
+          "oklch(72% 0.078 290)",
+          "oklch(84% 0.078 290)",
+          "oklch(95% 0.078 290)"
+        ]
+      },
+      "lit": {
+        "role": "secondary",
+        "displayName": "Hot White",
+        "canonical": "oklch(94.1% 0.031 294)",
+        "tonalRamp": [
+          "oklch(15% 0.031 294)",
+          "oklch(26% 0.031 294)",
+          "oklch(38% 0.031 294)",
+          "oklch(49% 0.031 294)",
+          "oklch(61% 0.031 294)",
+          "oklch(72% 0.031 294)",
+          "oklch(84% 0.031 294)",
+          "oklch(95% 0.031 294)"
+        ]
+      },
+      "red": {
+        "role": "tertiary",
+        "displayName": "Door Red",
+        "canonical": "oklch(65.5% 0.231 26)",
+        "tonalRamp": [
+          "oklch(15% 0.050 26)",
+          "oklch(26% 0.072 26)",
+          "oklch(38% 0.096 26)",
+          "oklch(49% 0.118 26)",
+          "oklch(61% 0.142 26)",
+          "oklch(72% 0.164 26)",
+          "oklch(84% 0.188 26)",
+          "oklch(95% 0.210 26)"
+        ]
+      },
+      "red-ink": {
+        "role": "tertiary",
+        "displayName": "Red Ink",
+        "canonical": "oklch(71.2% 0.181 23)",
+        "tonalRamp": [
+          "oklch(15% 0.050 23)",
+          "oklch(26% 0.072 23)",
+          "oklch(38% 0.096 23)",
+          "oklch(49% 0.118 23)",
+          "oklch(61% 0.142 23)",
+          "oklch(72% 0.164 23)",
+          "oklch(84% 0.181 23)",
+          "oklch(95% 0.181 23)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display stamp",
+        "purpose": "Full-width hero stamp, stamped in letter by letter through the #ink filter."
+      },
+      "headline": {
+        "displayName": "Headline stamp",
+        "purpose": "Section heads, through #ink."
+      },
+      "headline-sm": {
+        "displayName": "Headline stamp, small",
+        "purpose": "Room heads on Studios."
+      },
+      "title": {
+        "displayName": "Title stamp",
+        "purpose": "Ticket, room-card, plan, course and outcome names; #ink-mid or #ink-soft."
+      },
+      "statement": {
+        "displayName": "Statement",
+        "purpose": "The manifesto, compressed Archivo whose words light up as the page scrolls."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Hot White intro lines, max 34ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, max 65ch."
+      },
+      "label": {
+        "displayName": "Expanded label",
+        "purpose": "Uppercase nav, buttons, field labels, footer heads."
+      },
+      "mono": {
+        "displayName": "Data mono",
+        "purpose": "Gear specs, capacities, hours."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Prices and large capacities."
+      }
+    },
+    "shadows": [
+      {
+        "name": "plate-glow",
+        "value": "0 0 2.5rem -0.25rem color-mix(in srgb, var(--b) 60%, transparent), 0 .5rem 2rem -1rem var(--b)",
+        "purpose": "Button hover, glowing in the button's own colour."
+      },
+      {
+        "name": "bar-glow",
+        "value": "0 0 .6rem rgba(150, 120, 255, .6)",
+        "purpose": "Lit hour-bar cells on plan hover."
+      },
+      {
+        "name": "light up",
+        "value": "text-shadow: 0 0 .06em rgba(185, 168, 255, .55), 0 0 .5em rgba(120, 90, 255, .35)",
+        "purpose": "Hero stamp glow."
+      },
+      {
+        "name": "nav-rule",
+        "value": "0 1px 0 var(--ink-faint)",
+        "purpose": "Hairline under the scrolled nav."
+      },
+      {
+        "name": "torch",
+        "value": "radial-gradient(circle, rgba(130, 96, 255, .16) 0%, rgba(90, 60, 220, .06) 30%, transparent 62%); mix-blend-mode: screen",
+        "purpose": "The fixed UV beam, 70vmax, following the pointer."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Reveals, drawer wipe, hover transitions, arrow nudges."
+      },
+      {
+        "name": "ease-stamp",
+        "value": "cubic-bezier(.7, 0, .84, 0)",
+        "purpose": "Stamp-in: letters and headings drop from scale(1.6) or 1.06 with blur, then a 0.32s thud."
+      },
+      {
+        "name": "stamp-stagger",
+        "value": "85ms per letter, 150ms lead, 550ms each",
+        "purpose": "Hero stamp letter sequence."
+      },
+      {
+        "name": "reveal",
+        "value": "0.9s ease-out, translateY(1.5rem) to 0",
+        "purpose": "Scroll reveals, visible without JS."
+      },
+      {
+        "name": "hour-stagger",
+        "value": "0.35s per cell, 45ms stagger",
+        "purpose": "Hour bars filling in."
+      },
+      {
+        "name": "beam-follow",
+        "value": "lerp 0.22 (pointer), 0.04 (idle sweep after 2.6s)",
+        "purpose": "Torch tracking; idle and touch sweep on sine paths."
+      },
+      {
+        "name": "page-transition",
+        "value": "view-transition: out .35s ease-stamp blur, in .55s ease-out clip wipe",
+        "purpose": "Cross-page navigation."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "all durations .01ms; torch removed; plates fully lit",
+        "purpose": "prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "640px"
+      },
+      {
+        "name": "stack",
+        "value": "720px"
+      },
+      {
+        "name": "two-up",
+        "value": "860px"
+      },
+      {
+        "name": "tablet",
+        "value": "900px"
+      },
+      {
+        "name": "nav-drawer",
+        "value": "960px"
+      },
+      {
+        "name": "max-container",
+        "value": "1480px"
+      }
+    ],
+    "filters": [
+      {
+        "name": "ink",
+        "purpose": "Heavy ink bleed and pressure blotch for display and headline stamps (displacement 3.2)."
+      },
+      {
+        "name": "ink-mid",
+        "purpose": "Lighter bleed for mid-size stamps so counters stay open (displacement 2.2)."
+      },
+      {
+        "name": "ink-soft",
+        "purpose": "Edge roughening only, for small stamps, wordmark and buttons (displacement 1.6)."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Book Button",
+      "kind": "button",
+      "refersTo": "button-book",
+      "description": "Solid Door Red plate with arrow; every Book or Start action.",
+      "html": "<a class=\"ds-btn ds-btn-book\" href=\"#\">Book a room <svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" aria-hidden=\"true\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn-book { --b: var(--red, #ff3b3b); } .ds-btn { display: inline-flex; align-items: center; gap: .7em; min-height: 3.25rem; padding: .85rem 1.5rem .8rem; border: 2px solid var(--b); color: var(--b); background: transparent; font: 800 .9rem/1 var(--text, 'Archivo', sans-serif); font-stretch: 125%; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; border-radius: 0; cursor: pointer; transition: color .25s cubic-bezier(.16,1,.3,1), background-color .25s cubic-bezier(.16,1,.3,1), box-shadow .35s cubic-bezier(.16,1,.3,1), transform .12s; } .ds-btn svg { transition: transform .35s cubic-bezier(.16,1,.3,1); } .ds-btn:hover { background: var(--b); color: var(--ground, #000000); box-shadow: 0 0 2.5rem -0.25rem color-mix(in srgb, var(--b) 60%, transparent), 0 .5rem 2rem -1rem var(--b); } .ds-btn:hover svg { transform: translateX(.25em); } .ds-btn:focus-visible { outline: 2px dashed var(--lit, #ffffff); outline-offset: 4px; } .ds-btn:active { transform: scale(.97) rotate(-.5deg); } .ds-btn-book { background: var(--b); color: var(--ground, #000000); } .ds-btn-book:hover { background: var(--red-ink, #ff6b6b); border-color: var(--red-ink, #ff6b6b); }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Stamp White outline plate for secondary paths; fills with ink on hover.",
+      "html": "<a class=\"ds-btn ds-btn-outline\" href=\"#\">Join Core <svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" aria-hidden=\"true\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn-outline { --b: var(--ink, #f2f2f2); } .ds-btn { display: inline-flex; align-items: center; gap: .7em; min-height: 3.25rem; padding: .85rem 1.5rem .8rem; border: 2px solid var(--b); color: var(--b); background: transparent; font: 800 .9rem/1 var(--text, 'Archivo', sans-serif); font-stretch: 125%; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; border-radius: 0; cursor: pointer; transition: color .25s cubic-bezier(.16,1,.3,1), background-color .25s cubic-bezier(.16,1,.3,1), box-shadow .35s cubic-bezier(.16,1,.3,1), transform .12s; } .ds-btn svg { transition: transform .35s cubic-bezier(.16,1,.3,1); } .ds-btn:hover { background: var(--b); color: var(--ground, #000000); box-shadow: 0 0 2.5rem -0.25rem color-mix(in srgb, var(--b) 60%, transparent), 0 .5rem 2rem -1rem var(--b); } .ds-btn:hover svg { transform: translateX(.25em); } .ds-btn:focus-visible { outline: 2px dashed var(--lit, #ffffff); outline-offset: 4px; } .ds-btn:active { transform: scale(.97) rotate(-.5deg); }"
+    },
+    {
+      "name": "Solid Ink Button",
+      "kind": "button",
+      "refersTo": "button-solid",
+      "description": "Solid Stamp White plate for form submits; turns Hot White on hover.",
+      "html": "<button class=\"ds-btn ds-btn-solid\" type=\"button\">Send <svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" aria-hidden=\"true\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></button>",
+      "css": ".ds-btn-solid { --b: var(--ink, #f2f2f2); } .ds-btn { display: inline-flex; align-items: center; gap: .7em; min-height: 3.25rem; padding: .85rem 1.5rem .8rem; border: 2px solid var(--b); color: var(--b); background: transparent; font: 800 .9rem/1 var(--text, 'Archivo', sans-serif); font-stretch: 125%; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; border-radius: 0; cursor: pointer; transition: color .25s cubic-bezier(.16,1,.3,1), background-color .25s cubic-bezier(.16,1,.3,1), box-shadow .35s cubic-bezier(.16,1,.3,1), transform .12s; } .ds-btn svg { transition: transform .35s cubic-bezier(.16,1,.3,1); } .ds-btn:hover { background: var(--b); color: var(--ground, #000000); box-shadow: 0 0 2.5rem -0.25rem color-mix(in srgb, var(--b) 60%, transparent), 0 .5rem 2rem -1rem var(--b); } .ds-btn:hover svg { transform: translateX(.25em); } .ds-btn:focus-visible { outline: 2px dashed var(--lit, #ffffff); outline-offset: 4px; } .ds-btn:active { transform: scale(.97) rotate(-.5deg); } .ds-btn-solid { background: var(--b); color: var(--ground, #000000); } .ds-btn-solid:hover { background: var(--lit, #ffffff); border-color: var(--lit, #ffffff); }"
+    },
+    {
+      "name": "Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Underlined field on Raised Ground with an expanded uppercase label.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Email *</span><input class=\"ds-field-input\" type=\"email\" placeholder=\"you@email.com\"></label>",
+      "css": ".ds-field { display: grid; gap: .45rem; max-width: 22rem; } .ds-field-label { font: 700 .72rem/1 var(--text, 'Archivo', sans-serif); font-stretch: 125%; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-dim, #a6a6a6); } .ds-field-input { background: var(--ground-2, #0b0b0b); border: 0; border-bottom: 2px solid var(--ink-faint, #3a3a3a); border-radius: 0; padding: .9rem .9rem .8rem; color: var(--lit, #ffffff); font: inherit; transition: border-color .2s, background-color .2s; } .ds-field-input::placeholder { color: var(--ink-dim, #a6a6a6); } .ds-field-input:hover { border-color: var(--ink-dim, #a6a6a6); } .ds-field-input:focus { outline: none; border-color: var(--ink, #f2f2f2); background: var(--ground-3, #161616); }"
+    },
+    {
+      "name": "Nav",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Expanded Faded Ink labels; current page lit with a Door Red underline; Book at the end.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Studios</a><a href=\"#\" aria-current=\"page\">Plans</a><a href=\"#\">Learn to DJ</a><a href=\"#\">Contact</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 2rem; align-items: center; } .ds-nav a { position: relative; font: 700 .74rem/1 var(--text, 'Archivo', sans-serif); font-stretch: 112%; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; color: var(--ink-dim, #a6a6a6); padding-block: .5rem; } .ds-nav a:hover, .ds-nav a[aria-current=page] { color: var(--lit, #ffffff); } .ds-nav a[aria-current=page]::after { content: ''; position: absolute; left: 0; right: 0; bottom: -.1rem; height: 2px; background: var(--red, #ff3b3b); } .ds-nav a:focus-visible { outline: 2px dashed var(--lit, #ffffff); outline-offset: 4px; }"
+    },
+    {
+      "name": "Perk Tag",
+      "kind": "chip",
+      "refersTo": "perk-tag",
+      "description": "Square 1px Ghost Ink tag listing a plan perk; excluded perks struck through.",
+      "html": "<ul class=\"ds-tags\"><li class=\"ds-tag\">All rooms included</li><li class=\"ds-tag\">15% member discount</li><li class=\"ds-tag ds-tag-no\">Merch</li></ul>",
+      "css": ".ds-tags { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; margin: 0; padding: 0; } .ds-tag { font: 600 .78rem/1.4 var(--text, 'Archivo', sans-serif); letter-spacing: .02em; padding: .3rem .6rem; border: 1px solid var(--ink-faint, #3a3a3a); color: var(--ink, #f2f2f2); } .ds-tag-no { color: var(--ink-dim, #a6a6a6); text-decoration: line-through; }"
+    },
+    {
+      "name": "Ticket Stub",
+      "kind": "custom",
+      "refersTo": "ticket",
+      "description": "Perforated room stub with side notches; inverts to ink on hover.",
+      "html": "<a class=\"ds-ticket\" href=\"#\"><span class=\"ds-ticket-name\">Vortex</span><span class=\"ds-ticket-type\">Events and content</span><span class=\"ds-ticket-cap\"><span>Capacity</span><b>20</b></span></a>",
+      "css": ".ds-ticket { --notch: 9px; display: grid; gap: .35rem; width: 15rem; padding: 1.1rem 1.25rem 1.25rem; text-decoration: none; color: var(--ink, #f2f2f2); background: var(--ground-2, #0b0b0b); -webkit-mask: radial-gradient(circle var(--notch) at 0 50%, transparent 98%, #000) left/51% 100% no-repeat, radial-gradient(circle var(--notch) at 100% 50%, transparent 98%, #000) right/51% 100% no-repeat; mask: radial-gradient(circle var(--notch) at 0 50%, transparent 98%, #000) left/51% 100% no-repeat, radial-gradient(circle var(--notch) at 100% 50%, transparent 98%, #000) right/51% 100% no-repeat; border-top: 2px dashed var(--ink-faint, #3a3a3a); transition: background-color .3s, color .3s; } .ds-ticket-name { font: 900 2.2rem/.9 var(--display, 'Big Shoulders', sans-serif); text-transform: uppercase; } .ds-ticket-type { font-size: .82rem; color: var(--ink-dim, #a6a6a6); } .ds-ticket-cap { display: flex; justify-content: space-between; align-items: baseline; font: .78rem var(--mono, 'JetBrains Mono', monospace); color: var(--ink-dim, #a6a6a6); margin-top: .35rem; } .ds-ticket-cap b { color: var(--lit, #ffffff); font-weight: 400; font-size: 1.05rem; } .ds-ticket:hover, .ds-ticket:focus-visible { background: var(--ink, #f2f2f2); color: var(--ground, #000000); outline: none; } .ds-ticket:hover .ds-ticket-type, .ds-ticket:hover .ds-ticket-cap, .ds-ticket:hover .ds-ticket-cap b, .ds-ticket:focus-visible .ds-ticket-type, .ds-ticket:focus-visible .ds-ticket-cap, .ds-ticket:focus-visible .ds-ticket-cap b { color: var(--ground, #000000); }"
+    },
+    {
+      "name": "Hour Bar",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Twenty cells, one per hour; filled cells are the plan's exact monthly hours.",
+      "html": "<div class=\"ds-hours\"><div class=\"ds-hours-label\"><span>Studio time</span><span><b>12</b> hrs / month</span></div><div class=\"ds-hours-track\" role=\"img\" aria-label=\"12 of 20 hours\"><i class=\"f\"></i><i class=\"f\"></i><i class=\"f\"></i><i class=\"f\"></i><i class=\"f\"></i><i class=\"f\"></i><i class=\"f\"></i><i class=\"f\"></i><i class=\"f\"></i><i class=\"f\"></i><i class=\"f\"></i><i class=\"f\"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>",
+      "css": ".ds-hours { display: grid; gap: .45rem; max-width: 30rem; } .ds-hours-label { display: flex; justify-content: space-between; font: .8rem var(--mono, 'JetBrains Mono', monospace); color: var(--ink-dim, #a6a6a6); } .ds-hours-label b { color: var(--lit, #ffffff); font-weight: 400; } .ds-hours-track { display: grid; grid-template-columns: repeat(20, 1fr); gap: 3px; height: 1.6rem; } .ds-hours-track i { background: var(--ink-faint, #3a3a3a); opacity: .35; transition: background-color .3s, box-shadow .3s; } .ds-hours-track i.f { background: var(--ink, #f2f2f2); opacity: 1; } .ds-hours:hover .ds-hours-track i.f { background: var(--lit, #ffffff); box-shadow: 0 0 .6rem rgba(150, 120, 255, .6); }"
+    },
+    {
+      "name": "Spec List",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Gear rows in mono with dotted leaders to the quantity.",
+      "html": "<ul class=\"ds-spec\"><li>Pioneer CDJ-3000<span>x3</span></li><li>Pioneer DJM-V10<span>x1</span></li><li>Roland TR-8S<span>x1</span></li></ul>",
+      "css": ".ds-spec { display: grid; list-style: none; margin: 0; padding: 0; max-width: 26rem; border-top: 1px solid var(--ink-faint, #3a3a3a); } .ds-spec li { display: flex; align-items: baseline; gap: .6rem; padding: .62rem 0; border-bottom: 1px solid var(--ink-faint, #3a3a3a); font: .9rem var(--mono, 'JetBrains Mono', monospace); color: var(--lit, #ffffff); } .ds-spec li::after { content: ''; flex: 1; order: 2; border-bottom: 1px dotted var(--ink-faint, #3a3a3a); transform: translateY(-.25em); } .ds-spec li span { order: 3; color: var(--ink-dim, #a6a6a6); }"
+    },
+    {
+      "name": "UV Plate",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Dithered ink print over the colour photo, revealed in a soft circle where the beam falls (static beam position in this preview).",
+      "html": "<figure class=\"ds-uv\"><img class=\"ds-stamp-white\" src=\"assets/img/vortex-room-ink.png\" alt=\"\"><img class=\"ds-uv-lit\" src=\"assets/img/vortex-room.webp\" alt=\"The Vortex room\"></figure>",
+      "css": ".ds-uv { --lx: 55%; --ly: 45%; --r: 180px; position: relative; overflow: hidden; background: var(--ground, #000000); isolation: isolate; margin: 0; width: 32rem; max-width: 100%; aspect-ratio: 16/10; } .ds-uv img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; } .ds-stamp-white { opacity: .9; } .ds-uv-lit { -webkit-mask: radial-gradient(circle var(--r) at var(--lx) var(--ly), #000 0%, rgba(0,0,0,.92) 38%, rgba(0,0,0,.35) 68%, transparent 100%); mask: radial-gradient(circle var(--r) at var(--lx) var(--ly), #000 0%, rgba(0,0,0,.92) 38%, rgba(0,0,0,.35) 68%, transparent 100%); filter: saturate(1.15) contrast(1.05); } .ds-uv::after { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 2; background: radial-gradient(circle calc(var(--r) * 1.15) at var(--lx) var(--ly), transparent 55%, rgba(150, 120, 255, .22) 75%, transparent 100%); mix-blend-mode: screen; } .ds-uv:hover { --lx: 30%; --ly: 60%; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Blacklight Door Stamp",
+    "overview": "The site is the dark room at the door of a warehouse party, and the visitor holds the UV torch. Everything is printed in one white stamp ink on a pure black ground, and it turns into the real thing (hot white type, full-colour photographs) only where the light falls. One gesture drives every reveal: the pointer is the torch on desktop; on touch and when idle, the beam sweeps the room by itself.\n\nThe material is cheap club print: rubber-stamped condensed display type pushed through an SVG ink-bleed filter, two-tone Bayer-dithered photo prints, dashed perforations, stamp-edged rules, a fixed film-grain overlay. Density is low and loud: huge stamps, long ruled lists, typographic sections instead of card grids. Proof is literal: gear lists in mono, capacities as two-digit figures, membership hour bars whose length is the exact number of hours.\n\nThe world refuses the stock club template: full-bleed video, a centred headline, and a grid of cards.",
+    "keyCharacteristics": [
+      "One ink colour for all printed matter; white only where the light lands; red only for booking and live state.",
+      "Every photo is a UV plate: dithered ink print on top, colour underneath, revealed by the beam.",
+      "Stamped Big Shoulders Black, always through an ink filter.",
+      "Square, ruled, perforated: no radius, no cards, no drop shadows.",
+      "Motion is a stamp (fast in, thud) or a glow (light passing), never a float."
+    ],
+    "rules": [
+      {
+        "name": "The One Ink Rule",
+        "body": "All printed matter is Stamp White or one of its two tints. No second hue for type, rules or fills.",
+        "section": "colors"
+      },
+      {
+        "name": "The Light Means Lit Rule",
+        "body": "Hot White is a state, not a decoration: it marks what the light (or the pointer, or focus) is on, plus the few elements that are always under the light (hero stamp, ledes, figures).",
+        "section": "colors"
+      },
+      {
+        "name": "The Door Red Rule",
+        "body": "Red is booking and live state. If it is not a Book action, a current-page mark, or an error, it is not red.",
+        "section": "colors"
+      },
+      {
+        "name": "The Stamp Rule",
+        "body": "Every solid Big Shoulders setting goes through an ink filter: `#ink` for display and headline sizes, `#ink-mid` for mid-size stamps so counters stay open, `#ink-soft` for small stamps, the wordmark and buttons. The only unfiltered display setting is the outlined footer wordmark.",
+        "section": "typography"
+      },
+      {
+        "name": "The Mono Is Data Rule",
+        "body": "JetBrains Mono appears only for gear, counts, hours and prices. Never for prose, labels or decoration.",
+        "section": "typography"
+      },
+      {
+        "name": "The Glow Not Lift Rule",
+        "body": "Nothing casts a shadow downward. Emphasis is light emitted in the element's own colour.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do ship every photo as a pair: a two-tone Bayer-dithered ink print and the colour original, combined in a UV plate.",
+      "Do route every Book action through the solid Door Red button with the arrow, and keep secondary actions as outline plates.",
+      "Do set prices, capacities, hours and gear in JetBrains Mono with tabular figures; capacities as two digits (06, 20).",
+      "Do draw quantities at their true length: an hour bar has one cell per hour out of twenty.",
+      "Do separate content with 2px rules and dashed perforations instead of boxes.",
+      "Do let every reveal be the light: stamp-in (ease cubic-bezier(.7, 0, .84, 0)) for type, a beam or scroll-driven glow for photos and words, and give reduced motion a fully lit, static state."
+    ],
+    "donts": [
+      "Don't round corners or put content in cards; the only curves are the ticket notches and the beam.",
+      "Don't show a colour photo at rest outside the light; colour appears under the beam or as the beam-borne peek.",
+      "Don't use red for anything but booking, current page, and errors.",
+      "Don't use drop shadows for elevation; emphasis glows in the element's own colour.",
+      "Don't set Big Shoulders solid without an ink filter, or set prose in it.",
+      "Don't use Ghost Ink for resting text; it is for rules, borders and the unlit state of a reveal that always completes.",
+      "Don't build the stock club template: full-bleed video, a centred headline over it, and a grid of cards."
+    ]
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "title": "Choose the visual world for Overture",
+  "question": "Dark techno is locked in. These are different takes on it. Keep the main one, pick an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Blacklight Door Stamp",
+      "kicker": "THE ROLL",
+      "lineage": "the UV ink stamp on your wrist at a warehouse door, visible only under blacklight",
+      "thesis": "The site is a dark room, and your cursor is the UV torch: rooms, gear and plans glow only where the light reaches.",
+      "palette": ["#07060c", "#1a1430", "#b9a8ff", "#e9e4ff", "#ff3b3b"],
+      "materials": ["rubber-stamp ink with uneven pressure", "UV fluorescence on black", "1-bit dithered studio photos that turn full-colour under the light"],
+      "viewport": "Full-black screen. A huge OVERTURE stamp, its ink coming through bleed and grain. The cursor (or an automatic sweep on phones) lights up a real room photo underneath. BOOK A ROOM is stamped bottom-left, and the Nova/Hybrid/Vortex/Suite room picker is always visible.",
+      "risk": "If the glow is overdone it slides into the stock 'neon on black' look; the stamp texture and the hand-inked edges have to carry it.",
+      "raised": [
+        {"from": "challenger-one-bit", "raise": "Strict two-tone discipline: every photo is dithered into stamp ink and ground until the UV light turns it into the real colour photo."},
+        {"from": "challenger-labanotation", "raise": "Length equals duration: each membership's hours are drawn as an exact proportional bar (6 / 12 / 16 / 20 h), not just written as a number."},
+        {"from": "challenger-miura", "raise": "One gesture drives everything: the same UV beam runs every reveal on every page, with no separate scroll effects."}
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "Strobe & Fog Room",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "the club floor at 3am, fog and a single strobe",
+      "thesis": "The page pulses at 128 BPM: each strobe flash freezes a frame of the studio.",
+      "palette": ["#050505", "#f2f2f2", "#e5242b"],
+      "materials": ["haze/fog shader", "hard white strobe flashes", "motion-blurred photography"],
+      "viewport": "Fog fills the screen and the logo hangs in it. Strobe hits reveal photos of the Vortex in time with the beat. The primary action is BOOK NOW.",
+      "risk": "It's the familiar techno-site look, and the strobes need careful limits to stay safe for photosensitive visitors."
+    },
+    {
+      "id": "challenger-scope",
+      "label": "Signal Bench",
+      "verdict": "competitive",
+      "lineage": "CRT oscilloscope, phosphor trace on an etched graticule",
+      "thesis": "Every room and plan is a signal you tune into on a phosphor graticule.",
+      "palette": ["#040805", "#2bff88", "#5d6b62", "#ffb347"],
+      "materials": ["phosphor glow", "etched graticule", "detented knobs"],
+      "viewport": "A live waveform from Web Audio drawn across the hero; knobs switch between rooms.",
+      "case": "Producers recognise the scope; it holds on audience identification but loses some clarity for beginners.",
+      "risk": "Can feel like a lab instrument rather than a club."
+    },
+    {
+      "id": "challenger-decollage",
+      "label": "Torn Poster Wall",
+      "verdict": "competitive",
+      "lineage": "Toronto hoardings, layers of gig posters torn back",
+      "thesis": "Tear down through layers of event posters to find rooms, plans and classes.",
+      "palette": ["#141414", "#d9d4c7", "#e5242b", "#8a8a85"],
+      "materials": ["wheat-paste paper", "torn fibrous edges", "fragments of 4 type systems"],
+      "viewport": "A wall of torn Overture posters; pulling a flap reveals the room beneath.",
+      "case": "Rooted in local scene culture, but grey paper reads less dark-techno than the brief asks.",
+      "risk": "Drifts toward punk/indie rather than techno."
+    },
+    {
+      "id": "challenger-one-bit",
+      "label": "One-bit Desktop",
+      "verdict": "declined",
+      "lineage": "early 1-bit desktop OS",
+      "thesis": "Studio as overlapping dithered windows.",
+      "palette": ["#000000", "#ffffff"],
+      "materials": ["ordered dither", "1px chrome"],
+      "viewport": "Overlapping windows, each one a room.",
+      "case": "Nostalgic computing, not a club; DJs don't see themselves in it.",
+      "kept": "Strict two-tone dithered photography until the UV light reveals the colour.",
+      "risk": "Retro novelty."
+    },
+    {
+      "id": "challenger-labanotation",
+      "label": "Dance Score",
+      "verdict": "declined",
+      "lineage": "Labanotation movement score",
+      "thesis": "A vertical score read upward.",
+      "palette": ["#ffffff", "#000000", "#cccccc"],
+      "materials": ["score paper", "shaded blocks"],
+      "viewport": "Centre staff with symbol blocks.",
+      "case": "White paper and choreography notation, so it misses the techno brief.",
+      "kept": "Length equals exact duration, used for the membership hour bars.",
+      "risk": "Opaque to visitors."
+    },
+    {
+      "id": "challenger-miura",
+      "label": "Miura Fold",
+      "verdict": "declined",
+      "lineage": "deployable aerospace fold",
+      "thesis": "One pull unfolds a whole sheet.",
+      "palette": ["#f5f5f0", "#c9a646", "#9bb5d6"],
+      "materials": ["scored paper", "gold foil"],
+      "viewport": "A packet unfolding into a sail.",
+      "case": "Light, precise and aerospace in feel, with no link to the club world.",
+      "kept": "One control runs the whole system: the UV beam drives every reveal.",
+      "risk": "Off-brief."
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "canon": true,
+  "canonCard": {
+    "label": "Standard dark club site",
+    "thesis": "The typical nightlife/studio site, done really well.",
+    "palette": ["#0a0a0a", "#ffffff", "#e5242b"],
+    "materials": ["full-bleed video hero", "condensed sans", "photo grid"],
+    "viewport": "Full-screen room video, big condensed headline, BOOK NOW button.",
+    "risk": "Looks like every other studio and club site in the city."
+  },
+  "steer": true
+}
