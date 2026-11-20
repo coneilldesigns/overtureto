@@ -744,6 +744,9 @@ main:has(> .map-zone:last-child) + .foot { border-top-color: var(--ink-faint); }
 .map-pin span { position: absolute; left: 22px; top: 50%; transform: translateY(-50%); white-space: nowrap; padding: .35rem .55rem .3rem; background: var(--ground); border: 2px solid var(--ink); color: var(--lit); font: 900 1rem/1 var(--display); text-transform: uppercase; letter-spacing: .02em; }
 @media (prefers-reduced-motion: reduce) { .map-pin::before, .map-pin::after { animation: none; } }
 
+/* the short FAQ stamp takes only its own width; the questions get the rest */
+.faq-head { grid-template-columns: auto minmax(0, 1fr); }
+@media (max-width: 860px) { .faq-head { grid-template-columns: 1fr; } }
 .faq { border-top: 2px solid var(--ink); }
 .faq details { border-bottom: 2px solid var(--ink-faint); }
 .faq summary {
