@@ -721,6 +721,29 @@ main, .foot { position: relative; z-index: 1; }
 .socials svg { width: 1.25rem; height: 1.25rem; }
 @media (max-width: 900px) { .visit { grid-template-columns: 1fr; } }
 
+.map { margin: 0; }
+.map__view { position: relative; width: 100vw; margin-inline: calc(50% - 50vw); height: clamp(260px, 30vw, 440px); background: var(--ground-2); border-top: 2px solid var(--ink-faint); overflow: hidden; display: grid; place-items: center; }
+/* the footer rule under the map drops to the same grey */
+main:has(> .map-zone:last-child) + .foot { border-top-color: var(--ink-faint); }
+.map__fallback { font: 700 .8rem/1 var(--text); letter-spacing: .14em; text-transform: uppercase; color: var(--ink); }
+.map__view.leaflet-container { display: block; font: inherit; background: var(--ground); }
+/* black-and-white print of the street grid; red stays for the pin only */
+.map__view .leaflet-tile-pane { filter: grayscale(1) contrast(1.15) brightness(1.1); }
+.map__view::after { content: ""; position: absolute; inset: 0; z-index: 450; pointer-events: none; background: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, .7) 100%); }
+.map__view .leaflet-control-zoom { border: 0; border-radius: 0; margin: 1rem var(--gutter); }
+.map__view .leaflet-control-zoom a { width: 2.4rem; height: 2.4rem; line-height: 2.3rem; border-radius: 0 !important; border: 2px solid var(--ink-faint); background: var(--ground); color: var(--ink); font: 400 1.1rem/2.2rem var(--mono); }
+.map__view .leaflet-control-zoom a + a { border-top: 0; }
+.map__view .leaflet-control-zoom a:hover { background: var(--ink); color: var(--ground); }
+.map__view .leaflet-control-attribution { background: rgba(0, 0, 0, .7); color: var(--ink-dim); font: .62rem/1.4 var(--mono); }
+.map__view .leaflet-control-attribution a { color: var(--ink); }
+.map-pin { position: relative; }
+.map-pin b { position: absolute; left: 50%; top: 50%; width: 14px; height: 14px; margin: -7px 0 0 -7px; background: var(--red); border: 2px solid var(--lit); box-shadow: 0 0 1rem var(--red); }
+.map-pin::before, .map-pin::after { content: ""; position: absolute; left: 50%; top: 50%; width: 14px; height: 14px; margin: -7px 0 0 -7px; border: 2px solid var(--red); border-radius: 50%; animation: map-ping 2.4s var(--ease-out, ease-out) infinite; }
+.map-pin::after { animation-delay: 1.2s; }
+@keyframes map-ping { from { transform: scale(1); opacity: .9; } to { transform: scale(6); opacity: 0; } }
+.map-pin span { position: absolute; left: 22px; top: 50%; transform: translateY(-50%); white-space: nowrap; padding: .35rem .55rem .3rem; background: var(--ground); border: 2px solid var(--ink); color: var(--lit); font: 900 1rem/1 var(--display); text-transform: uppercase; letter-spacing: .02em; }
+@media (prefers-reduced-motion: reduce) { .map-pin::before, .map-pin::after { animation: none; } }
+
 .faq { border-top: 2px solid var(--ink); }
 .faq details { border-bottom: 2px solid var(--ink-faint); }
 .faq summary {
