@@ -497,9 +497,14 @@
   const warpTowards = (to, ms) => { warpFrom = warp; warpTo = to; warpT0 = performance.now(); warpDur = ms; };
   const DPR = Math.min(devicePixelRatio || 1, 1.5);
   const seed = () => {
+    // iOS fires resize whenever the address bar shows or hides: keep the stars where they are and just
+    // stretch them to the new height, only re-scattering on a real change like rotating the phone
+    const keep = stars.length && innerWidth === W && Math.abs(innerHeight - H) < 160;
+    const sy = keep ? innerHeight / H : 1;
     W = innerWidth; H = innerHeight;
     cosmos.width = W * DPR; cosmos.height = H * DPR;
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    if (keep) { for (const s of stars) s.y *= sy; return; }
     const n = Math.min(520, Math.round((W * H) / 2600));
     stars = Array.from({ length: n }, () => ({
       x: Math.random() * W, y: Math.random() * H, z: 0.15 + Math.random() ** 2 * 0.85,
