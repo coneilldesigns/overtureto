@@ -248,6 +248,22 @@
     else { addEventListener("scroll", lightWords, { passive: true }); lightWords(); }
   }
 
+  /* ---------- optical alignment: big headings under a kicker line up with its red dot ---------- */
+  // display letters carry empty space on their left (about 4% of the size for L, O, M; almost none for T),
+  // so each heading is pulled left by exactly its first letter's, in em so it holds at every size
+  const alignHeads = () => {
+    const ctx2 = document.createElement("canvas").getContext("2d");
+    document.querySelectorAll(".kicker + h1, .kicker + h2, .kicker + .section__head > h2:first-child").forEach((h) => {
+      const ch = (h.getAttribute("aria-label") || h.textContent).trim().charAt(0);
+      if (!ch) return;
+      const cs = getComputedStyle(h);
+      ctx2.font = `${cs.fontWeight} 1000px ${cs.fontFamily}`;
+      const bearing = -ctx2.measureText(ch).actualBoundingBoxLeft / 1000;
+      if (bearing > 0 && bearing < 0.12) h.style.marginLeft = `${(-bearing).toFixed(3)}em`;
+    });
+  };
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(alignHeads);
+
   /* ---------- rail arrows ---------- */
   document.querySelectorAll("[data-rail]").forEach((nav) => {
     const rail = document.getElementById(nav.dataset.rail);

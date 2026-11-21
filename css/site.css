@@ -917,19 +917,16 @@ img[src*="vortex-practice"] { object-position: 50% 62%; }
 .deck-strip .deck__top { margin-bottom: .7rem; }
 .deck-strip .deck { padding: 0; }
 .deck-strip .deck__top { padding-inline: var(--gutter); }
-/* homepage only: the strip reads as a marquee: a white band, black ink, tilted against its neighbours */
+/* homepage only: the strip sits where a marquee would, tilted against its neighbours; white wave on the stars */
 .page-home .deck-strip .deck {
-  --wave-ink: 0,0,0;
-  background: var(--ink); color: var(--ground);
-  border-block: 2px solid var(--ink);
+  background: none;
   padding-block: .55rem;
   transform: rotate(1.2deg) scale(1.02);
 }
-.page-home .deck-strip .deck__top, .page-home .deck-strip .deck__title, .page-home .deck-strip .deck__read b { color: var(--ground); }
 /* same height and spacing as a marquee: the wave fills one line of marquee type, no readout */
 .page-home .deck-strip { margin-block: var(--space-4); }
 .page-home .deck-strip .deck__top { display: none; }
-.page-home .deck-strip .deck__wave { height: clamp(1.6rem, 3vw, 2.4rem); }
+.page-home .deck-strip .deck__wave { height: clamp(3rem, 6vw, 4.75rem); }
 
 .hero--intro .hero__foot, .hero--intro .intro__body { padding-bottom: clamp(3rem, 6vw, 5rem); }
 
@@ -1352,7 +1349,7 @@ img[src*="vortex-practice"] { object-position: 50% 62%; }
 @media (prefers-reduced-motion: reduce) { .pillar__img { animation: none; } }
 
 /* memberships: an LED kicker so the section reads as plans, square photos beside each plan name */
-.kicker { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem 1rem; margin: 0 0 clamp(1rem, 2vw, 1.5rem); font: 700 .8rem/1 var(--text); font-stretch: 125%; letter-spacing: .16em; text-transform: uppercase; color: var(--lit); }
+.kicker { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem 1rem; margin: 0 0 clamp(1.35rem, 2.5vw, 1.85rem); font: 700 .8rem/1 var(--text); font-stretch: 125%; letter-spacing: .16em; text-transform: uppercase; color: var(--lit); }
 .kicker i { width: .55rem; height: .55rem; border-radius: 50%; background: var(--red); box-shadow: 0 0 .7rem var(--red); animation: led 2.4s ease-in-out infinite; }
 .kicker span { font: 400 .74rem/1 var(--mono); letter-spacing: .1em; text-transform: none; color: var(--ink-dim); padding-left: 1rem; border-left: 1px solid var(--ink-faint); }
 @keyframes led { 50% { opacity: .45; box-shadow: 0 0 .2rem var(--red); } }
@@ -1438,7 +1435,7 @@ img[src*="vortex-practice"] { object-position: 50% 62%; }
 .ph:hover img { transform: scale(1.04); filter: saturate(1.3); }
 /* page headers: a galaxy and glitching memories instead of a dim photo */
 .phead { isolation: isolate; min-height: 78svh; }
-.phead .kicker { margin-bottom: 1rem; }
+.phead .kicker { margin-bottom: clamp(1.35rem, 2.5vw, 1.85rem); }
 .phead .galaxy { z-index: -2; }
 /* studios: the drifting belt sits straight under the header */
 .rooms-belt { position: relative; padding-bottom: clamp(1rem, 3vw, 2.5rem); }
@@ -1459,7 +1456,7 @@ img[src*="vortex-practice"] { object-position: 50% 62%; }
 .faq details { position: relative; }
 .faq details[open]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: var(--red); box-shadow: 0 0 .8rem var(--red); }
 .faq summary { justify-content: flex-start; } .faq summary::after { margin-left: auto; }
-.section__head > div > .kicker { margin-bottom: 1.4rem; }
+.section__head > div > .kicker { margin-bottom: clamp(1.5rem, 2.5vw, 1.85rem); }
 .faq summary { text-align: left; }
 
 /* second marquee under the intro: tilts and scrolls the opposite way */
