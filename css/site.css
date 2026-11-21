@@ -513,6 +513,7 @@ main, .foot { position: relative; z-index: 1; }
 
 /* a quiet divider where a marquee would be too loud */
 .rule { height: 0; margin: 0; border: 0; border-top: 1px solid #2a2a2a; }
+.phead + .rule { margin-top: clamp(1.5rem, 3.4vw, 2.75rem); } /* breathing room under the page head */
 
 /* ---------- sections ---------- */
 
@@ -893,7 +894,7 @@ img[src*="vortex-practice"] { object-position: 50% 62%; }
 .intro__meta strong { color: var(--lit); font-weight: 600; }
 /* gear makers, as single-colour marks: the decks are the credential */
 .gear-brands { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .9rem clamp(1.5rem, 4vw, 2.75rem); margin: clamp(1.5rem, 3vw, 2.25rem) 0 0; max-width: none; }
-.gear-brands__label { font: 700 .74rem/1 var(--text); font-stretch: 125%; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-dim); flex-basis: 100%; text-align: center; }
+.gear-brands__label { font: 700 .74rem/1 var(--text); font-stretch: 125%; letter-spacing: .14em; text-transform: uppercase; color: var(--lit); flex-basis: 100%; text-align: center; margin-bottom: 1.4rem; }
 .gear-brands__logo { height: clamp(1.1rem, 1.6vw, 1.45rem); aspect-ratio: var(--ar); background: var(--ink); -webkit-mask: var(--logo) center/contain no-repeat; mask: var(--logo) center/contain no-repeat; opacity: .85; transition: opacity .3s; }
 .gear-brands__logo:hover { opacity: 1; }
 .gear-brands__logo--pioneer { --logo: url(../assets/img/brands/pioneer-dj.svg); --ar: 7.47; }
@@ -1486,7 +1487,7 @@ img[src*="vortex-practice"] { object-position: 50% 62%; }
 
 /* intro: the marquee peeks in at the bottom of the first screen instead of a gap above it */
 .page-home .intro__float { min-height: 0; padding-bottom: 0; }
-.page-home .hero--intro .marquee--rev { margin-block: clamp(4.5rem, 8.5vw, 7.5rem) clamp(3.5rem, 6.5vw, 5.5rem); }
+.page-home .hero--intro .marquee--rev { margin-block: clamp(5.75rem, 10.5vw, 9.5rem) clamp(4.75rem, 8.5vw, 7.5rem); }
 /* intro subheading: wider measure, a touch larger */
 .intro__body .lede { max-width: 46ch; font-size: clamp(1.25rem, 1.05rem + .9vw, 1.85rem); }
 
