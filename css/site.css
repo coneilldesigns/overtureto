@@ -897,6 +897,7 @@ img[src*="vortex-practice"] { object-position: 50% 62%; }
 .gear-brands__logo { height: clamp(1.1rem, 1.6vw, 1.45rem); aspect-ratio: var(--ar); background: var(--ink); -webkit-mask: var(--logo) center/contain no-repeat; mask: var(--logo) center/contain no-repeat; opacity: .85; transition: opacity .3s; }
 .gear-brands__logo:hover { opacity: 1; }
 .gear-brands__logo--pioneer { --logo: url(../assets/img/brands/pioneer-dj.svg); --ar: 7.47; }
+.gear-brands__logo--alphatheta { --logo: url(../assets/img/brands/alphatheta.svg); --ar: 6.26; }
 .gear-brands__logo--technics { --logo: url(../assets/img/brands/technics.svg); --ar: 6.48; }
 .gear-brands__logo--allen-heath { --logo: url(../assets/img/brands/allen-heath.png); --ar: 7.52; }
 .deck-strip { margin-top: clamp(2.5rem, 5vw, 4rem); }
