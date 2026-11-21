@@ -143,4 +143,8 @@ async function init() {
   section.classList.add("is-earth-on");
 }
 
-init().catch(() => {});
+// the closer is at the bottom of the page: build the Earth only as it comes near, so its textures
+// don't stall the page while it is arriving
+if (section) new IntersectionObserver(([en], o) => {
+  if (en.isIntersecting) { o.disconnect(); init().catch(() => {}); }
+}, { rootMargin: "150% 0px" }).observe(section);

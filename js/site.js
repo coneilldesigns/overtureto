@@ -29,7 +29,7 @@
   }
 
   /* ---------- hero stamp ---------- */
-    const stampLetters = document.querySelectorAll(".hero__stamp span");
+    const stampLetters = document.querySelectorAll(".hero__stamp span:not(.w)");
   stampLetters.forEach((s, i) => {
     s.style.setProperty("--i", i);
     s.style.setProperty("--rot", `${(Math.sin(i * 7.3) * 6).toFixed(1)}deg`);
@@ -42,7 +42,7 @@
       const h = en.target;
       h.classList.add("is-live");
       liveIO.unobserve(h);
-      const n = h.querySelectorAll(".hero__stamp span").length;
+      const n = h.querySelectorAll(".hero__stamp span:not(.w)").length;
       if (n) setTimeout(() => h.classList.add("is-landed"), reduce ? 0 : n * 85 + 700);
     });
   }, { threshold: 0.25 });
@@ -490,6 +490,9 @@
   document.body.prepend(cosmos);
   const ctx = cosmos.getContext("2d");
   let W = 0, H = 0, stars = [], lastY = scrollY, vel = 0, spaceRaf = 0, shooting = null;
+  // hyperspace between pages: warp eases from one level to another, 0 is still space, 1 is full streak
+  let warp = 0, warpFrom = 0, warpTo = 0, warpT0 = 0, warpDur = 1, lastFrame = 0;
+  const warpTowards = (to, ms) => { warpFrom = warp; warpTo = to; warpT0 = performance.now(); warpDur = ms; };
   const DPR = Math.min(devicePixelRatio || 1, 1.5);
   const seed = () => {
     W = innerWidth; H = innerHeight;
@@ -498,13 +501,37 @@
     const n = Math.min(520, Math.round((W * H) / 2600));
     stars = Array.from({ length: n }, () => ({
       x: Math.random() * W, y: Math.random() * H, z: 0.15 + Math.random() ** 2 * 0.85,
-      tw: Math.random() * Math.PI * 2,
+      tw: Math.random() * Math.PI * 2, red: Math.random() < 0.06, // red ones only show in warp
     }));
   };
   const draw = (now) => {
     const dy = scrollY - lastY; lastY = scrollY;
     vel += (dy - vel) * 0.18;
     ctx.clearRect(0, 0, W, H);
+    // movement scales with real frame time, so the streaks stay smooth while a new page is still busy loading
+    const step = lastFrame ? Math.min(4, (now - lastFrame) / 16.7) : 1; lastFrame = now;
+    const wk = Math.min(1, (now - warpT0) / warpDur);
+    warp = warpFrom + (warpTo - warpFrom) * (wk < 0.5 ? 2 * wk * wk : 1 - (-2 * wk + 2) ** 2 / 2);
+    if (warp > 0.01) {
+      // stars race out from the centre, drawn as streaks pointing back at it
+      const cx = W / 2, cy = H / 2, reach = Math.max(W, H) / 2;
+      for (const s of stars) {
+        let dx = s.x - cx, dy2 = s.y - cy;
+        const d = Math.hypot(dx, dy2) || 1;
+        const speed = warp * (3 + 46 * s.z) * (0.15 + d / reach);
+        s.x += (dx / d) * speed * step; s.y += (dy2 / d) * speed * step;
+        if (s.x < -40 || s.x > W + 40 || s.y < -40 || s.y > H + 40) {
+          s.x = cx + (Math.random() - 0.5) * W * 0.35; s.y = cy + (Math.random() - 0.5) * H * 0.35;
+          continue;
+        }
+        const len = Math.min(200, speed * 4.5), a = Math.min(1, 0.4 + s.z * 0.6 + warp * 0.3) * 0.38;
+        ctx.strokeStyle = s.red ? `rgba(255,59,59,${(a * 0.75).toFixed(3)})` : `rgba(255,255,255,${a.toFixed(3)})`; // reds a step dimmer than white
+        ctx.lineWidth = 0.4 + s.z * 1.1;
+        ctx.beginPath(); ctx.moveTo(s.x, s.y); ctx.lineTo(s.x - (dx / d) * len, s.y - (dy2 / d) * len); ctx.stroke();
+      }
+      spaceRaf = requestAnimationFrame(draw);
+      return;
+    }
     for (const s of stars) {
       s.y -= dy * s.z * 0.45;
       s.x += s.z * 0.04;
@@ -542,6 +569,38 @@
     document.addEventListener("visibilitychange", () => {
       cancelAnimationFrame(spaceRaf);
       if (!document.hidden) { lastY = scrollY; spaceRaf = requestAnimationFrame(draw); }
+    });
+  }
+
+  /* ---------- page to page: fade out into hyperspace, arrive out of it ---------- */
+  const root = document.documentElement;
+  if (root.classList.contains("is-arriving")) {
+    // the content fades in while the stars are still streaking, so the two overlap; the short hold lets the
+    // page's first heavy frames (images, fonts, galaxy) pass while it is still invisible
+    if (!reduce) { warp = warpFrom = 1; warpTowards(0, 2000); }
+    setTimeout(() => root.classList.remove("is-arriving"), 200);
+  }
+  if (!reduce) {
+    document.addEventListener("click", (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = e.target.closest("a[href]");
+      if (!a || (a.target && a.target !== "_self") || a.hasAttribute("download")) return;
+      const url = new URL(a.href, location.href);
+      if (url.origin !== location.origin || !/^https?:$/.test(url.protocol)) return;
+      if (url.pathname === location.pathname && url.search === location.search) return; // same page, e.g. #anchors
+      e.preventDefault();
+      try { sessionStorage.setItem("ov-warp", "1"); } catch {}
+      // fade the page out first, then hit warp, then jump; the new page arrives out of warp as it fades in
+      root.classList.add("is-leaving");
+      setTimeout(() => warpTowards(1, 500), 380);
+      setTimeout(() => { location.href = url.href; }, 820);
+    });
+    // coming back via the back button restores this page mid-warp: reset it
+    addEventListener("pageshow", (e) => {
+      if (e.persisted) {
+        root.classList.remove("is-leaving", "is-arriving"); warp = warpFrom = warpTo = 0;
+        if (menuBtn && drawer && root.classList.contains("menu-open")) setMenu(false); // don't come back to an open menu
+      }
     });
   }
 

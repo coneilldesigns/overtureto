@@ -116,6 +116,12 @@ async function init() {
   scene.add(ring);
   const ease = (x) => 1 - Math.pow(1 - Math.min(1, Math.max(0, x)), 4);
   const clamp01 = (x) => Math.min(1, Math.max(0, x));
+  // arriving from another page in warp (js/site.js): the stars are still streaking, so this starfield slows
+  // down on the same curve and the mark flies in out of the distance
+  const ARRIVE = document.documentElement.classList.contains("warp-in") && !reduce;
+  const inOut = (x) => { x = clamp01(x); return x < 0.5 ? 2 * x * x : 1 - (-2 * x + 2) ** 2 / 2; };
+  let arriveT = 0; // advances by frame time, so a slow frame pauses the fly-in instead of making it jump
+
   // any scroll, tap or key jumps straight to the finished mark
   let introStart = -1, skipped = false;
   const skip = () => { skipped = true; };
@@ -164,6 +170,8 @@ async function init() {
     // intro clock: it, and everything it drives, sits at its end state when there is no intro
     if (INTRO && introStart < 0) introStart = now;
     const it = INTRO && !skipped ? Math.min(T_END, (now - introStart) / 1000) : T_END;
+    if (ARRIVE) arriveT += Math.min(dt, 1 / 30);
+    rig.position.z = ARRIVE && !INTRO ? -70 * (1 - ease(arriveT / 1.5)) : 0;
     const settle = clamp01((it - LAST - 0.3) / 1.2); // idle motion fades in once the mark is built
     let pulse = 0;
     for (const m of pieces) {
@@ -195,7 +203,10 @@ async function init() {
       stars.rotation.z = t * 0.012;
       stars.rotation.y = tiltY * 0.08;
       const p = starGeo.attributes.position.array;
-      const warp = 1 + 34 * (1 - ease(it / (LAST + 0.4))); // out of hyperspace as the mark locks
+      const warp = Math.max(
+        1 + 34 * (1 - ease(it / (LAST + 0.4))), // out of hyperspace as the mark locks
+        ARRIVE ? 1 + 30 * (1 - inOut(now / 2000)) : 1, // page warp, timed from page start like the background
+      );
       for (let i = 2; i < p.length; i += 3) { p[i] += dt * 2.2 * warp; if (p[i] > -4) p[i] -= 76; }
       starGeo.attributes.position.needsUpdate = true;
     }
