@@ -896,23 +896,23 @@ img[src*="vortex-practice"] { object-position: 50% 62%; }
   border: 0; background: none; box-shadow: none;
   padding: 0 calc(6vw + var(--gutter));
 }
-.deck-strip .deck__wave { height: clamp(72px, 9vw, 132px); }
+.deck-strip .deck__wave { height: clamp(52px, 6.5vw, 96px); }
 .deck-strip .deck__top { margin-bottom: .7rem; }
 .deck-strip .deck { padding: 0; }
 .deck-strip .deck__top { padding-inline: var(--gutter); }
-/* the home strip reads as a marquee: a white band, black ink, tilted against its neighbours */
-.deck-strip .deck {
+/* homepage only: the strip reads as a marquee: a white band, black ink, tilted against its neighbours */
+.page-home .deck-strip .deck {
   --wave-ink: 0,0,0;
   background: var(--ink); color: var(--ground);
   border-block: 2px solid var(--ink);
   padding-block: .55rem;
   transform: rotate(1.2deg) scale(1.02);
 }
-.deck-strip .deck__top, .deck-strip .deck__title, .deck-strip .deck__read b { color: var(--ground); }
+.page-home .deck-strip .deck__top, .page-home .deck-strip .deck__title, .page-home .deck-strip .deck__read b { color: var(--ground); }
 /* same height and spacing as a marquee: the wave fills one line of marquee type, no readout */
-.deck-strip { margin-block: var(--space-4); }
-.deck-strip .deck__top { display: none; }
-.deck-strip .deck__wave { height: clamp(1.6rem, 3vw, 2.4rem); }
+.page-home .deck-strip { margin-block: var(--space-4); }
+.page-home .deck-strip .deck__top { display: none; }
+.page-home .deck-strip .deck__wave { height: clamp(1.6rem, 3vw, 2.4rem); }
 
 .hero--intro .hero__foot, .hero--intro .intro__body { padding-bottom: clamp(3rem, 6vw, 5rem); }
 
