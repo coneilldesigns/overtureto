@@ -45,7 +45,7 @@
       const n = h.querySelectorAll(".hero__stamp span:not(.w)").length;
       if (n) setTimeout(() => h.classList.add("is-landed"), reduce ? 0 : n * 85 + 700);
     });
-  }, { threshold: 0.25 });
+  }, { threshold: 0, rootMargin: "0px 0px -20% 0px" }); // as soon as the top edge is a fifth of the way up: the intro is tall, so waiting for a share of it was too late
   document.querySelectorAll(".hero, .phead").forEach((h) => liveIO.observe(h));
 
   /* ---------- the torch: one beam drives every reveal ---------- */

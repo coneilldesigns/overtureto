@@ -334,6 +334,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 .js .rise { opacity: 0; }
 .js .is-live .rise { opacity: 1; animation: rise .9s var(--ease-out) both; animation-delay: var(--d, .9s); }
+/* the home intro is met mid-scroll, so its stamp lands quicker than the page heads */
+.js .hero--intro.is-live .hero__stamp span:not(.w) { animation-duration: .45s; animation-delay: calc(var(--i) * 50ms); }
+.js .hero--intro.is-live .hero__stamp .hero__mark { animation-duration: .7s; }
 @keyframes rise { from { opacity: 0; transform: translateY(1.25rem); } }
 
 /* ---------- deep space behind everything ---------- */
