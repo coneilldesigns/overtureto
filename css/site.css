@@ -350,7 +350,9 @@ main { transform-origin: 50% 50vh; } /* grow from the middle of the screen, wher
 .is-leaving main, .is-leaving .foot, .is-leaving .nav__in,
 .is-arriving main, .is-arriving .foot, .is-arriving .nav__in { opacity: 0; }
 .is-arriving main { transform: scale(.9); } /* arriving content flies in with the stars: smaller, growing to size */
-.is-leaving main, .is-leaving .foot, .is-leaving .nav__in { transition-duration: .4s; }
+/* leaving: a quick fade that starts at once (the arrival's slow-start curve made the header hang over the warp) */
+.is-leaving main, .is-leaving .foot, .is-leaving .nav__in { transition-duration: .35s; transition-timing-function: var(--ease-out); }
+.is-leaving .nav { background: transparent; box-shadow: none; } /* the scrolled bar and its line go with it */
 /* homepage arrival: the hero stays solid so the 3D logo sits in front of the streaks; space.js flies it in */
 .page-home.is-arriving main { opacity: 1; transform: none; }
 /* leaving from the mobile menu: the drawer fades with the page so the warp shows through */
@@ -1406,7 +1408,9 @@ img[src*="vortex-practice"] { object-position: 50% 62%; }
 /* intro: the swirl mark inline, left of the wordmark */
 .hero--intro .hero__stamp { font-size: clamp(3rem, 15vw, 26rem); align-items: center; }
 .hero__mark { display: inline-flex; align-items: center; margin-right: .1em; }
-.hero__mark img { display: block; height: .74em; width: auto; filter: drop-shadow(0 0 .12em rgba(255, 59, 59, .35)); }
+.hero__mark img { display: block; height: .74em; width: auto; filter: drop-shadow(0 0 .12em rgba(255, 59, 59, .35)); transition: transform 1.2s var(--ease-out); }
+/* hovering the wordmark turns the swirl like the nav logo (on the img: the span's transform belongs to the stamp-in) */
+.hero__stamp:hover .hero__mark img { transform: rotate(180deg); }
 .js .is-live .hero__mark { animation-duration: .9s; }
 
 /* red on every section */
