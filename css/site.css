@@ -394,6 +394,13 @@ main, .foot { position: relative; z-index: 1; }
   transition: opacity .8s var(--ease-out);
 }
 .space.is-3d .space__fallback { opacity: 0; pointer-events: none; }
+/* with JS, black space while the 3D logo loads: the flat logo only shows without WebGL, or if 3D still hasn't arrived after 4s */
+.js .space:not(.is-3d) .space__fallback { opacity: 0; animation: float 6s ease-in-out infinite, fallback-in .8s 4s forwards; }
+.js .space.no-3d .space__fallback { opacity: 1; animation: float 6s ease-in-out infinite; }
+@keyframes fallback-in { to { opacity: 1; } }
+/* logo intro (js/space.js): nav and scroll cue wait until the mark has landed */
+.nav__in, .space__cue { transition: opacity .9s var(--ease-out); }
+.is-intro .nav__in, .is-intro .space__cue { opacity: 0; }
 @keyframes float { 50% { transform: translateY(-14px); } }
 @media (max-width: 700px) { .space__fallback { width: 66vmin; } }
 .space__cue {
