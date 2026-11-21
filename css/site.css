@@ -490,6 +490,9 @@ main, .foot { position: relative; z-index: 1; }
 .marquee__mark { width: 1.6rem; height: 1.6rem; background: currentColor; -webkit-mask: url(../assets/img/logo-mark.png) center/contain no-repeat; mask: url(../assets/img/logo-mark.png) center/contain no-repeat; flex: none; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
+/* a quiet divider where a marquee would be too loud */
+.rule { height: 0; margin: 0; border: 0; border-top: 1px solid #2a2a2a; }
+
 /* ---------- sections ---------- */
 
 .section { padding-block: var(--space-6); position: relative; }
@@ -873,6 +876,14 @@ img[src*="vortex-practice"] { object-position: 50% 62%; }
 .intro__body .btn-row { justify-content: center; }
 .intro__meta { display: flex; flex-wrap: wrap; justify-content: center; gap: .3rem 1.4rem; margin: .25rem 0 0; color: var(--ink-dim); font-size: .95rem; max-width: none; }
 .intro__meta strong { color: var(--lit); font-weight: 600; }
+/* gear makers, as single-colour marks: the decks are the credential */
+.gear-brands { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .9rem clamp(1.5rem, 4vw, 2.75rem); margin: clamp(1.5rem, 3vw, 2.25rem) 0 0; max-width: none; }
+.gear-brands__label { font: 700 .74rem/1 var(--text); font-stretch: 125%; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-dim); flex-basis: 100%; text-align: center; }
+.gear-brands__logo { height: clamp(1.1rem, 1.6vw, 1.45rem); aspect-ratio: var(--ar); background: var(--ink); -webkit-mask: var(--logo) center/contain no-repeat; mask: var(--logo) center/contain no-repeat; opacity: .85; transition: opacity .3s; }
+.gear-brands__logo:hover { opacity: 1; }
+.gear-brands__logo--pioneer { --logo: url(../assets/img/brands/pioneer-dj.svg); --ar: 7.47; }
+.gear-brands__logo--technics { --logo: url(../assets/img/brands/technics.svg); --ar: 6.48; }
+.gear-brands__logo--allen-heath { --logo: url(../assets/img/brands/allen-heath.png); --ar: 7.52; }
 .deck-strip { margin-top: clamp(2.5rem, 5vw, 4rem); }
 .deck-strip .deck { border-inline: 0; padding-inline: var(--gutter); background: linear-gradient(180deg, rgba(10, 10, 10, .75), rgba(2, 2, 2, .75)); }
 .deck-strip .deck__wave { height: clamp(56px, 7vw, 92px); }
@@ -889,6 +900,19 @@ img[src*="vortex-practice"] { object-position: 50% 62%; }
 .deck-strip .deck__top { margin-bottom: .7rem; }
 .deck-strip .deck { padding: 0; }
 .deck-strip .deck__top { padding-inline: var(--gutter); }
+/* the home strip reads as a marquee: a white band, black ink, tilted against its neighbours */
+.deck-strip .deck {
+  --wave-ink: 0,0,0;
+  background: var(--ink); color: var(--ground);
+  border-block: 2px solid var(--ink);
+  padding-block: .55rem;
+  transform: rotate(1.2deg) scale(1.02);
+}
+.deck-strip .deck__top, .deck-strip .deck__title, .deck-strip .deck__read b { color: var(--ground); }
+/* same height and spacing as a marquee: the wave fills one line of marquee type, no readout */
+.deck-strip { margin-block: var(--space-4); }
+.deck-strip .deck__top { display: none; }
+.deck-strip .deck__wave { height: clamp(1.6rem, 3vw, 2.4rem); }
 
 .hero--intro .hero__foot, .hero--intro .intro__body { padding-bottom: clamp(3rem, 6vw, 5rem); }
 
@@ -1233,7 +1257,7 @@ img[src*="vortex-practice"] { object-position: 50% 62%; }
   position: relative; flex: none;
   width: max(var(--w), 190px);
   margin: 0 4.5vw 0 0;
-  padding: 0; border: 0; background: none; color: inherit; text-align: left; cursor: pointer;
+  display: block; padding: 0; border: 0; background: none; color: inherit; text-align: left; text-decoration: none; cursor: pointer;
   align-self: flex-start;
   transform: translateY(calc(var(--top) * 4.2));
 }
@@ -1424,13 +1448,15 @@ img[src*="vortex-practice"] { object-position: 50% 62%; }
 /* second marquee under the intro: tilts and scrolls the opposite way */
 .marquee--rev { transform: rotate(1.2deg) scale(1.02); margin-block: clamp(3rem, 6vw, 5rem) clamp(2rem, 4vw, 3.5rem); }
 .marquee--rev .marquee__track { animation-direction: reverse; }
+/* between sections the reversed marquee keeps the standard gap */
+.marquee--rev:not(.hero--intro .marquee--rev) { margin-block: var(--space-4); }
 
 /* home: more air between sections (space and intro stay tight) */
 .page-home .section { padding-block: clamp(5rem, 9vw, 9rem); }
 .page-home .section:has(+ .marquee) { padding-bottom: clamp(3.5rem, 6vw, 6rem); }
 .page-home .marquee + .section { padding-top: clamp(4rem, 7vw, 7rem); }
-.page-home .section:has(+ .deck-strip) { padding-bottom: clamp(3rem, 5vw, 5rem); }
-.page-home .deck-strip + .section { padding-top: clamp(3.5rem, 6vw, 6rem); }
+.page-home .section:has(+ .deck-strip) { padding-bottom: clamp(3.5rem, 6vw, 6rem); }
+.page-home .deck-strip + .section { padding-top: clamp(4rem, 7vw, 7rem); }
 .page-home .hero--intro + .section { padding-top: clamp(6rem, 11vw, 11rem); }
 .page-home .closer { padding-top: clamp(5rem, 9vw, 9rem); }
 
@@ -1444,7 +1470,7 @@ img[src*="vortex-practice"] { object-position: 50% 62%; }
 
 /* intro: the marquee peeks in at the bottom of the first screen instead of a gap above it */
 .page-home .intro__float { min-height: 0; padding-bottom: 0; }
-.page-home .marquee--rev { margin-block: clamp(4.5rem, 8.5vw, 7.5rem) clamp(3.5rem, 6.5vw, 5.5rem); }
+.page-home .hero--intro .marquee--rev { margin-block: clamp(4.5rem, 8.5vw, 7.5rem) clamp(3.5rem, 6.5vw, 5.5rem); }
 /* intro subheading: wider measure, a touch larger */
 .intro__body .lede { max-width: 46ch; font-size: clamp(1.25rem, 1.05rem + .9vw, 1.85rem); }
 

@@ -187,7 +187,7 @@
     place();
   }
 
-  /* drifting belt: the readout shows whichever room you point at or tap */
+  /* drifting belt: the readout shows whichever room you point at or focus; clicking a photo opens that room on the studios page */
   const readout = document.querySelector(".readout");
   if (readout) {
     const set = (it) => {
@@ -237,7 +237,8 @@
     const block = document.querySelector(".manifesto");
     const lightWords = () => {
       const r = block.getBoundingClientRect();
-      const p = Math.min(1, Math.max(0, (innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.35)));
+      // starts as the top enters, every word is lit by the time the block is centred in the viewport
+      const p = Math.min(1, Math.max(0, (innerHeight * 0.85 - r.top) / (r.height / 2 + innerHeight * 0.35)));
       const n = Math.round(p * words.length);
       words.forEach((w, i) => w.classList.toggle("on", i < n));
     };
@@ -336,6 +337,8 @@
   document.querySelectorAll(".deck").forEach((deck) => {
     const cv = deck.querySelector(".deck__wave"), c = cv.getContext("2d"), timeEl = deck.querySelector(".deck__time");
     let w = 0, h = 0, on = true, t0 = performance.now(), raf = 0;
+    // ink colour as "r,g,b": white on the black decks, black where the strip is a white band
+    const ink = getComputedStyle(deck).getPropertyValue("--wave-ink").trim() || "255,255,255";
     const size = () => {
       const d = Math.min(devicePixelRatio || 1, 2);
       w = cv.clientWidth; h = cv.clientHeight;
@@ -349,7 +352,7 @@
       // beat grid
       for (let x = head - (beatPos % 1) * PX_PER_BEAT - Math.ceil(head / PX_PER_BEAT) * PX_PER_BEAT; x < w; x += PX_PER_BEAT) {
         const bar = Math.round(beatPos + (x - head) / PX_PER_BEAT) % 4 === 0;
-        c.fillStyle = bar ? "rgba(255,255,255,.22)" : "rgba(255,255,255,.07)";
+        c.fillStyle = bar ? `rgba(${ink},.22)` : `rgba(${ink},.07)`;
         c.fillRect(Math.round(x), 0, 1, bar ? h : 5);
       }
       // waveform bars, played part dimmer
@@ -358,7 +361,7 @@
         const i = Math.floor(first + x / step);
         if (i < 0) continue;
         const v = track[i % track.length], a = v * (mid - 3);
-        c.fillStyle = x < head ? "rgba(255,255,255,.38)" : "rgba(242,242,242,.95)";
+        c.fillStyle = x < head ? `rgba(${ink},.38)` : `rgba(${ink},.95)`;
         c.fillRect(x, mid - a, Math.max(1, step - 1), a * 2);
       }
       // playhead
@@ -397,13 +400,13 @@
   }
 
   /* ---------- a spiral galaxy that wakes up as the manifesto scrolls by, with a shooting star on arrival ---------- */
-  // one per page header and the manifesto; data-x / data-y / data-size place it in its section
+  // one per page header and the manifesto; data-x / data-y / data-size place it in its section, data-glow brightens it
   document.querySelectorAll(".galaxy").forEach((galaxy) => {
-    const gpx = parseFloat(galaxy.dataset.x || 0.74), gpy = parseFloat(galaxy.dataset.y || 0.4), gsz = parseFloat(galaxy.dataset.size || 1);
+    const gpx = parseFloat(galaxy.dataset.x || 0.74), gpy = parseFloat(galaxy.dataset.y || 0.4), gsz = parseFloat(galaxy.dataset.size || 1), glow = parseFloat(galaxy.dataset.glow || 1);
     const zone = galaxy.parentElement, gx = galaxy.getContext("2d");
     const GDPR = Math.min(devicePixelRatio || 1, 1.5);
     let gw = 0, gh = 0, gRaf = 0, gOn = false, comet = null, nextComet = 0;
-    const N = innerWidth < 700 ? 2200 : 5200;
+    const N = Math.round((innerWidth < 700 ? 2200 : 5200) * Math.min(glow, 1.5)), dsz = 1 + (glow - 1) * 0.35;
     const dust = Array.from({ length: N }, () => {
       const arm = Math.floor(Math.random() * 3), r = Math.random() ** 1.6;
       return {
@@ -433,8 +436,11 @@
       // core
       gx.save(); gx.translate(cx, cy); gx.rotate(rot); gx.scale(1, tilt);
       const halo = gx.createRadialGradient(0, 0, 0, 0, 0, R * 1.05);
-      halo.addColorStop(0, "rgba(255,240,230,.5)"); halo.addColorStop(0.08, "rgba(255,190,180,.22)");
-      halo.addColorStop(0.35, "rgba(255,59,59,.07)"); halo.addColorStop(1, "rgba(255,59,59,0)");
+      // infrared: a white-hot core that drops straight into the button red, strong enough to read as red not maroon
+      const ir = (v) => Math.min(1, v * glow).toFixed(3);
+      halo.addColorStop(0, `rgba(255,245,240,${ir(0.55)})`); halo.addColorStop(0.05, `rgba(255,107,107,${ir(0.38)})`);
+      halo.addColorStop(0.16, `rgba(255,59,59,${ir(0.24)})`); halo.addColorStop(0.4, `rgba(255,59,59,${ir(0.09)})`);
+      halo.addColorStop(1, "rgba(255,59,59,0)");
       gx.fillStyle = halo; gx.fillRect(-R * 1.1, -R * 1.1, R * 2.2, R * 2.2);
       gx.restore();
       gx.globalCompositeOperation = "lighter";
@@ -442,9 +448,9 @@
         const ang = d.a + spin * (1.6 - d.r);
         const lx = Math.cos(ang) * d.r * R, ly = Math.sin(ang) * d.r * R * tilt + d.o * R;
         const x = cx + lx * cr - ly * sr, y = cy + lx * sr + ly * cr;
-        const a = (1 - d.r * 0.75) * (0.55 + 0.45 * Math.sin(now / 1100 + d.tw));
-        gx.fillStyle = d.red ? `rgba(255,59,59,${(a * 0.7).toFixed(3)})` : `rgba(255,255,255,${(a * 0.85).toFixed(3)})`;
-        gx.fillRect(x, y, d.s, d.s);
+        const a = Math.min(1, (1 - d.r * 0.75) * (0.55 + 0.45 * Math.sin(now / 1100 + d.tw)) * glow);
+        gx.fillStyle = d.red ? `rgba(255,59,59,${Math.min(1, 0.55 + a * 0.6).toFixed(3)})` : `rgba(255,255,255,${(a * 0.85).toFixed(3)})`;
+        gx.fillRect(x, y, d.s * dsz, d.s * dsz);
       }
       gx.globalCompositeOperation = "source-over";
       // comet
