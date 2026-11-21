@@ -12,17 +12,19 @@
 
   const menuBtn = document.querySelector(".menu-btn");
   const drawer = document.getElementById("drawer");
-  const setMenu = (open) => {
+  const setMenu = (open, byKeyboard = false) => {
     doc.classList.toggle("menu-open", open);
     menuBtn.setAttribute("aria-expanded", String(open));
     menuBtn.querySelector(".menu-btn__txt").textContent = open ? "Close" : "Menu";
     drawer.toggleAttribute("inert", !open);
     document.body.style.overflow = open ? "hidden" : "";
-    if (open) drawer.querySelector("a")?.focus();
+    // move focus into the menu for keyboard users only; after a tap, Safari would ring the first link
+    if (open && byKeyboard) drawer.querySelector("a")?.focus();
   };
   if (menuBtn && drawer) {
     drawer.setAttribute("inert", "");
-    menuBtn.addEventListener("click", () => setMenu(!doc.classList.contains("menu-open")));
+    // a click with no pointer detail came from Enter or Space
+    menuBtn.addEventListener("click", (e) => setMenu(!doc.classList.contains("menu-open"), e.detail === 0));
     addEventListener("keydown", (e) => {
       if (e.key === "Escape" && doc.classList.contains("menu-open")) { setMenu(false); menuBtn.focus(); }
     });
